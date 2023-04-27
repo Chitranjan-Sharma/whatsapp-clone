@@ -1,0 +1,121 @@
+<div class="row d-flex justify-content-center h-100 align-items-center">
+  <div class="card p-2 col-md-4 shadow">
+    <form class="p-5 w-100" *ngIf="!newUser; else newUserAccount">
+      <h4 class="text-center">
+        Welcome Back :) <br />
+        Please sign in to continue !
+      </h4>
+
+      <div class="mb-5 mt-5">
+        <label for="exampleDropdownFormEmail2" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleDropdownFormEmail2"
+          placeholder="email@example.com"
+          [(ngModel)]="email"
+          name="email"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="exampleDropdownFormPassword2" class="form-label"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleDropdownFormPassword2"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+        />
+        <p class="text-danger">{{ api.errorMessage }}</p>
+        <h6 class="text-warning text-end" role="button">Forgot password !</h6>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-primary fw-bold px-4"
+          (click)="loginUser()"
+        >
+          Login
+        </button>
+      </div>
+      <p class="text-center mt-3">
+        New user ? please create new account <br /><a
+          class="btn-link"
+          role="button"
+          (click)="newUser = true"
+        >
+          Create new account
+        </a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<ng-template #newUserAccount>
+  <form class="p-5 w-100" *ngIf="newUser; else newUserAccount">
+    <h4 class="text-center">
+      * Welcome * <br />
+      Please create new account !
+    </h4>
+
+    <div class="mt-5">
+      <label for="userName" class="form-label">Enter Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        [(ngModel)]="userName"
+        name="userName"
+      />
+    </div>
+
+    <div class="mt-5">
+      <label for="userEmail" class="form-label">Enter Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="userEmail"
+        placeholder="email@example.com"
+        [(ngModel)]="email"
+        name="email"
+      />
+    </div>
+
+    <div class="mt-5">
+      <label for="userEmail" class="form-label">Enter Email</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleDropdownFormPassword2"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+      />
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+      <button
+        type="submit"
+        class="btn btn-primary fw-bold px-4"
+        (click)="registerUser()"
+      >
+        Register
+      </button>
+    </div>
+    <p class="text-center mt-3">
+      Already a customer ? please login<br /><a
+        class="btn-link"
+        role="button"
+        (click)="newUser = false"
+      >
+        Login
+      </a>
+    </p>
+  </form>
+</ng-template>

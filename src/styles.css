@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url("https://cdn.wallpapersafari.com/42/12/w3xlib.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg {
+  background-image: url("https://cdn.wallpapersafari.com/42/12/w3xlib.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.scroll-spy {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.bg-color {
+  background-color: azure;
+}
+
+.my-dp {
+  height: 40px;
+  width: 40px;
+}
+.my-dp:hover {
+  height: 41px;
+  width: 41px;
+}
+
+.nav-height {
+  height: 70px;
+}
+
+.singleLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.iconSize {
+  height: 25px;
+  width: 25px;
+}
+
+.itemHover:hover {
+  background-color: rgb(206, 241, 255);
+}

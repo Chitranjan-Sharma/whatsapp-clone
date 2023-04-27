@@ -1,0 +1,12 @@
+/* .row {
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/877/975/678/calm-reflection-sky-water-wallpaper-preview.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.card {
+  background: transparent;
+  color: azure;
+  font-weight: bolder;
+  border-radius: 50px;
+}

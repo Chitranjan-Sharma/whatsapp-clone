@@ -1,0 +1,133 @@
+<div class="scroll-spy" style="height: 880px">
+  <div class="sticky-top bg-color px-3 pb-2">
+    <div class="d-flex nav-height justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img
+          class="rounded-circle my-dp dropdown dropdown-toggle"
+          src="{{ api.LoggedUserData.profileImage }}"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-bs-auto-close="outside"
+        />
+        <h5 class="mx-2 singleLine w-50">
+          Hi, {{ api.LoggedUserData.userName }}
+        </h5>
+        <div class="dropdown-menu p-2">
+          <img
+            class="rounded my-dp"
+            src="{{ api.LoggedUserData.profileImage }}"
+            style="height: 250px; width: 250px"
+          />
+        </div>
+      </div>
+
+      <span>
+        <img
+          class="iconSize me-3"
+          src="https://img.icons8.com/ios-glyphs/30/null/add-user-group-man-man.png"
+        />
+        <img
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          class="iconSize"
+          src="https://img.icons8.com/external-neu-royyan-wijaya/32/null/external-more-neu-development-neu-royyan-wijaya.png"
+        />
+        <ul class="dropdown-menu">
+          <li>
+            <button
+              class="btn btn-link dropdown-item fw-bold"
+              (click)="api.router.navigate(['my_profile'])"
+            >
+              My Profile
+            </button>
+          </li>
+          <li>
+            <button
+              class="btn btn-link dropdown-item fw-bold"
+              (click)="userLogOut()"
+            >
+              Log-out
+            </button>
+          </li>
+        </ul>
+      </span>
+    </div>
+    <div class="d-flex justify-content-between align-items-center bg-color">
+      <input
+        class="form-control me-3"
+        type="text"
+        placeholder="Search users ..."
+      />
+      <img
+        src="https://img.icons8.com/tiny-color/32/null/search.png"
+        class="p-2"
+      />
+    </div>
+  </div>
+
+  <div class="bg-light">
+    <div class="p-1 itemHover" *ngFor="let user of api.allUsersList">
+      <div
+        class="w-100 px-3 py-2 d-flex justify-content-between align-items-center"
+        *ngIf="api.LoggedUserData._id != user._id"
+      >
+        <div class="d-flex align-items-center">
+          <img
+            class="userDp me-3"
+            src="{{ user.profileImage }}"
+            *ngIf="user.profileImage != ''; else defaultImage"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+          />
+
+          <ng-template #defaultImage>
+            <img
+              class="userDp me-3"
+              src="assets/profile_icon.png"
+              *ngIf="user.profileImage != ''"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              data-bs-auto-close="outside"
+            />
+          </ng-template>
+
+          <div class="dropdown-menu p-2">
+            <img
+              class="rounded my-dp"
+              src="{{ user.profileImage }}"
+              style="height: 250px; width: 250px"
+            />
+          </div>
+
+          <div (click)="selectUser(user)">
+            <h5 class="lh-1 w-100">
+              {{ user.userName }}
+              <br />
+              <h6 class="singleLine px-1" style="width: 250px">
+                {{ user.lastMessage }}
+              </h6>
+            </h5>
+          </div>
+        </div>
+        <p>{{ user.messageTime | date : "shortTime" }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-top h-100" id="demo">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">Heading</h1>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Some text lorem ipsum.</p>
+    <button class="btn btn-secondary" type="button">A Button</button>
+  </div>
+</div>
